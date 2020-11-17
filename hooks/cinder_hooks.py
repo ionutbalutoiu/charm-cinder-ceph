@@ -387,10 +387,20 @@ def ceph_access_joined(relation_id=None):
     # NOTE(jamespage): get key from ceph using a context
     ceph_keys = CephContext()()
 
+    ceph_replication_keys = CephContext('ceph-replication-device')()
+
+    ceph_replication_device_secret_uuid = leader_get('replicaadhasdhsa')
+    if not
+
+    rel_data = [{'name': application_name()
+                 'key': ceph_keys.get('key'),
+                 'secret-uuid': leader_get('secret-uuid')},
+                {'name': '{}-replication-device'.format(application_name()),
+                 'key': ceph_replication_keys.get('key'),
+                 'secret-uuid': leader_get('replication-device-secret_uuit')}
     relation_set(
         relation_id=relation_id,
-        relation_settings={'key': ceph_keys.get('key'),
-                           'secret-uuid': leader_get('secret-uuid')}
+        relation_settings=rel_data
     )
 
 
